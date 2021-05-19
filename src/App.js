@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import SignInForm from './components/SignInForm';
+import Home from './components/Home';
+import PollView from './components/PollView';
+import NewPoll from './components/NewPoll';
+import UsersList from './components/UsersList';
+import NotFound from './components/NotFound';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/signin" component={SignInForm} />
+                <Route exact path="/questions/:id" component={PollView} />
+                <Route exact path="/add" component={NewPoll} />
+                <Route exact path="/leaderboard" component={UsersList} />
+                <Route component={NotFound} />
+            </Switch>
+        );
+    }
 }
 
 export default App;

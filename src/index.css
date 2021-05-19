@@ -1,13 +1,666 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+
+.not-found-container{ 
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #131313;
+  color: #fff;
+  font-size: 96px;
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: -7px;
+}
+
+#not-found{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+#not-found:before,
+#not-found:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+#not-found:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+#not-found:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+nav {
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+  align-items: center;
+
+}
+
+nav a, nav span {
+  font-size: 1rem;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  color: rgb(41, 97, 201);
+  padding: 5px 10px;
+}
+
+nav a:hover {
+  color: #eee;
+  background-color: rgb(41, 97, 201);
+  border-radius: 10px;
+  box-shadow: 0 2px 30px 0 rgba(0,0,0,0.2);
+
+}
+
+
+
+main {
+  width: 30vw;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.btn {
+  display: flex;
+}
+button:hover{
+  filter:brightness(.8);
+  box-shadow: 0px 10px 50px 3px rgba(0,0,0,0.2);
+  transition: all 0.1s ease-in-out;
+
+
+}
+
+.btn button {
+  background-color: #fff;
+  width: 15vw;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.2em;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.btn button:first-child {
+  border-right: 1px solid #ddd;
+  border-top-left-radius: 5px;
+}
+
+.btn button:last-child {
+  border-top-right-radius: 5px;
+}
+
+.poll-cards-list {
+  list-style: none;
+  padding: 5px;
+}
+
+
+
+.a-poll {
+  width: 35vw;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition-duration: 0.3s;
+}
+
+.a-poll:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.a-poll .content {
+  display: flex;
+}
+
+.a-poll .avatar-container {
+  position: relative;
+  width: 10vw;
+  min-height: 20vh;
+  padding: 5px 0;
+  margin: 5px 0;
+  border-right: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.a-poll .avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-size: cover;
+}
+
+.a-poll .card-info {
+  width: 23vw;
+  min-height: 13vh;
+  text-align: left;
+  padding: 15px 10px 10px;
+}
+
+.a-poll .card-info > span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  font-family: 'Mulish', sans-serif;
+}
+
+.a-poll .card-info > div {
+  font-size: 1.2em;
+  border: 2px solid #ddd;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
+  background-color: rgb(252, 243, 243);
+  text-align: center;
+}
+
+.a-poll .card-info p {
+  margin: 5px;
+}
+
+.a-poll .card-info .chosen {
+  border: 2px solid rgb(41, 97, 201);
+}
+
+.a-poll i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(40%, -50%);
+  color: rgb(41, 97, 201);
+  font-size: 1.5em;
+  background-color: rgba(255,255,255,1);
+  border-radius: 50%;
+}
+
+.progress {
+  width: 90%;
+  height: 3vh;
+  border: 1px solid transparent;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.progress .bar {
+  height: inherit;
+  background-color: rgb(20, 64, 145);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: right;
+  padding-right: 5px;
+  color: #fff;
+}
+
+.votes {
+  font-size: 0.8em;
+}
+
+.a-poll div .hidden {
+  display: none;
+}
+
+.u-poll {
+  width: 35vw;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition-duration: 0.3s;
+}
+/* 
+.u-poll:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.u-poll .content {
+  display: flex;
+}
+
+.u-poll .avatar-container {
+  position: relative;
+  width: 10vw;
+  min-height: 20vh;
+  padding: 5px 0;
+  margin: 5px 0;
+  border-right: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.u-poll .avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-size: cover;
+}
+
+.u-poll .card-info {
+  width: 23vw;
+  min-height: 15vh;
+  text-align: left;
+  padding: 15px 10px 10px;
+}
+
+.u-poll .card-info span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.u-poll .card-info label {
+  display: inline-block;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.u-poll .card-info button {
+  width: inherit;
+  padding: 3px 0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: rgb(15, 61, 146);
+  font-size: 1.05em;
+  margin-top: 10px;
+}
+
+.u-poll .card-info button a {
+  display: inline-block;
+  width: inherit;
+  color: #fff;
+  text-decoration: none;
+} */
+
+.sign-in {
+  position: relative;
+  width: 35vw;
+  min-height: 30vh;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition-duration: 0.3s;
+}
+
+.sign-in  div {
+  font-size: 1.3em;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Mulish', sans-serif;
+  background-color: rgb(233, 238, 243);
+}
+
+.sign-in div p {
+  margin: 0;
+  padding: 5px;
+}
+
+.sign-in div span {
+  display: block;
+  font-size: 0.9em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+}
+
+select {
+  display: block;
+  width: 90%;
+  min-height: 4vh;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.sign-in button {
+  position: absolute;
+  bottom: 5px;
+  right: 50%;
+  transform: translateX(50%);
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  background-color: rgb(41, 97, 201);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 7px 1px;
+  cursor: pointer;
+  color: #fff;
+
+}
+
+option {
+  min-height: 4vh;
+}
+
+option:hover {
+  background-color: #ccc;
+}
+
+button:focus, select:focus, input:focus {
+  outline: 0;
+}
+
+.new-poll {
+  width: 35vw;
+  min-height: 30vh;
+  margin: 0 auto;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  transition-duration: 0.3s;
+}
+
+.new-poll > p {
+  font-size: 1em;
+  text-align: center;
+  margin: 5px 0;
+  padding: 5px 0;
+}
+.new-poll > p:first-child {
+  border-bottom: 1px solid rgb(226, 223, 223);
+  margin-top: 2rem;
+}
+
+
+
+
+#ans1, #ans2 {
+  display: block;
+  width: 92%;
+  height: 4vh;
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+#ans2{
+  margin-bottom: 2rem;
+}
+
+.new-poll fieldset {
+  text-align: center;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: auto;
+  margin-top: 10px;
+  height: 0;
+  width: 90%;
+}
+
+.new-poll button {
+  display: block;
+  width: 95%;
+  margin: 10px auto;
+  background-color: rgb(41, 97, 201);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 7px 1px;
+  cursor: pointer;
+}
+
+.new-poll button a {
+  display: inline-block;
+  width: inherit;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main {
+  text-align: center;
+}
+
+.user-cards-list {
+  display: inline-flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 5px;
+}
+
+.user-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition-duration: 0.3s;
+  text-align: left;
+}
+
+.user-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.user-card .avatar-container {
+  position: relative;
+  min-width: 8vw;
+  min-height: 13vh;
+  padding: 5px 0;
+  margin: 10px 0;
+  border-right: 1px solid #ddd;
+}
+
+.user-card .avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-size: cover;
+}
+
+.user-card .info {
+  border-right: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 0 7px;
+}
+
+.user-card .info p {
+  margin: 5px 0 15px;
+  font-size: 1.3em;
+  font-family: 'Mulish', sans-serif;
+}
+
+.user-card .info span {
+  display: block;
+  margin: 10px 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-card .score {
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.user-card .score p {
+  margin: 0;
+  padding: 10px;
+  background-color: rgb(234, 239, 245);
+}
+
+.user-card .score div {
+  width: 2vw;
+  height: 2vw;
+  line-height: 2vw;
+  display: inline-block;
+  padding: 5px;
+  background-color: rgb(41, 97, 201);
+  color: #fff;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.error {
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error span {
+  font-size: 4em;
+}
+
+.error i {
+  display: inline-block;
+  margin-top: 35vh;
+  font-size: 7em;
+  color: rgb(197, 51, 14);
+}
+
+.poll-card {
+  /* border: 1px solid #ddd; */
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  transition-duration: 0.3s;
+
+}
+.card{
+  display: flex;
+  justify-content: space-around;
+}
+
+.poll-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.author {
+  background-color: rgb(236, 236, 252);
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+  text-align: left;
+}
+
+.author-name{
+  color: rgb(41, 97, 201);
+}
+
+
+.poll-card .avatar-container {
+  display: flex;
+  border-right: 1px solid #ddd;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.poll-card .avatar {
+  width: 5vw;
+  height: 5vw;   
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-size: cover;
+}
+
+.poll-card .card-info {
+  /* display: inline-block; */
+  width: 18vw;
+  min-height: 13vh;
+  vertical-align: middle;
+  text-align: left;
+  padding: 5px;
+}
+
+.poll-card .card-info span {
+  display: block;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.poll-card .card-info span:first-child {
+  font-size: 1.2em;
+  color: #000;
+}
+
+.poll-card .card-info button {
+  width: inherit;
+  padding: 3px 0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: rgb(41, 97, 201);
+  font-size: 1.05em;
+}
+.poll-card .card-info button a {
+  display: inline-block;
+  width: inherit;
+  color: #fff;
+  text-decoration: none;
+}
+
+.chosen{
+  background-color: rgb(41, 97, 201) !important;
+  color: #eee;
 }

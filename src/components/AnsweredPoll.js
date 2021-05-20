@@ -40,7 +40,7 @@ class AnsweredPoll extends React.Component {
             two: choice === 'optionTwo' ? progress : 100 - progress
         }
         return (
-            <div className="a-poll">
+            <div className="poll-answered">
                 <div className="author">
                     {`Asked by ${authorInfo.name}`}
                 </div>

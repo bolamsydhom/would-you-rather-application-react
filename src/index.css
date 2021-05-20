@@ -154,7 +154,7 @@ button:hover{
 
 
 
-.a-poll {
+.poll-answered {
   width: 35vw;
   margin: 0 auto;
   border: 1px solid #ddd;
@@ -163,16 +163,16 @@ button:hover{
   transition-duration: 0.3s;
 }
 
-.a-poll:hover {
+.poll-answered:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 
-.a-poll .content {
+.poll-answered .content {
   display: flex;
 }
 
-.a-poll .avatar-container {
+.poll-answered .avatar-container {
   position: relative;
   width: 10vw;
   min-height: 20vh;
@@ -182,7 +182,7 @@ button:hover{
   vertical-align: middle;
 }
 
-.a-poll .avatar {
+.poll-answered .avatar {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -194,21 +194,21 @@ button:hover{
   background-size: cover;
 }
 
-.a-poll .card-info {
+.poll-answered .card-info {
   width: 23vw;
   min-height: 13vh;
   text-align: left;
   padding: 15px 10px 10px;
 }
 
-.a-poll .card-info > span {
+.poll-answered .card-info > span {
   display: block;
   margin-bottom: 10px;
   font-size: 1.3em;
   font-family: 'Mulish', sans-serif;
 }
 
-.a-poll .card-info > div {
+.poll-answered .card-info > div {
   font-size: 1.2em;
   border: 2px solid #ddd;
   margin-bottom: 10px;
@@ -219,15 +219,15 @@ button:hover{
   text-align: center;
 }
 
-.a-poll .card-info p {
+.poll-answered .card-info p {
   margin: 5px;
 }
 
-.a-poll .card-info .chosen {
+.poll-answered .card-info .chosen {
   border: 2px solid rgb(41, 97, 201);
 }
 
-.a-poll i {
+.poll-answered i {
   position: absolute;
   top: 0;
   right: 0;
@@ -261,7 +261,7 @@ button:hover{
   font-size: 0.8em;
 }
 
-.a-poll div .hidden {
+.poll-answered div .hidden {
   display: none;
 }
 
@@ -273,74 +273,7 @@ button:hover{
   margin-bottom: 20px;
   transition-duration: 0.3s;
 }
-/* 
-.u-poll:hover {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
 
-
-.u-poll .content {
-  display: flex;
-}
-
-.u-poll .avatar-container {
-  position: relative;
-  width: 10vw;
-  min-height: 20vh;
-  padding: 5px 0;
-  margin: 5px 0;
-  border-right: 1px solid #ddd;
-  vertical-align: middle;
-}
-
-.u-poll .avatar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8vw;
-  height: 8vw;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  background-size: cover;
-}
-
-.u-poll .card-info {
-  width: 23vw;
-  min-height: 15vh;
-  text-align: left;
-  padding: 15px 10px 10px;
-}
-
-.u-poll .card-info span {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1.3em;
-}
-
-.u-poll .card-info label {
-  display: inline-block;
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-.u-poll .card-info button {
-  width: inherit;
-  padding: 3px 0;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  background-color: rgb(15, 61, 146);
-  font-size: 1.05em;
-  margin-top: 10px;
-}
-
-.u-poll .card-info button a {
-  display: inline-block;
-  width: inherit;
-  color: #fff;
-  text-decoration: none;
-} */
 
 .sign-in {
   position: relative;
@@ -486,7 +419,7 @@ button:focus, select:focus, input:focus {
   padding: 5px;
 }
 
-.user-card {
+.card{
   display: flex;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -499,7 +432,7 @@ button:focus, select:focus, input:focus {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.user-card .avatar-container {
+.card.avatar-container {
   position: relative;
   min-width: 8vw;
   min-height: 13vh;
@@ -508,7 +441,7 @@ button:focus, select:focus, input:focus {
   border-right: 1px solid #ddd;
 }
 
-.user-card .avatar {
+.card.avatar {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -520,38 +453,38 @@ button:focus, select:focus, input:focus {
   background-size: cover;
 }
 
-.user-card .info {
+.card.info {
   border-right: 1px solid #ddd;
   margin: 10px 0;
   padding: 0 7px;
 }
 
-.user-card .info p {
+.card.info p {
   margin: 5px 0 15px;
   font-size: 1.3em;
   font-family: 'Mulish', sans-serif;
 }
 
-.user-card .info span {
+.card.info span {
   display: block;
   margin: 10px 5px;
   border-bottom: 1px solid #ccc;
 }
 
-.user-card .score {
+.card.score {
   margin: 10px;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.user-card .score p {
+.card.score p {
   margin: 0;
   padding: 10px;
   background-color: rgb(234, 239, 245);
 }
 
-.user-card .score div {
+.card.score div {
   width: 2vw;
   height: 2vw;
   line-height: 2vw;

@@ -265,7 +265,7 @@ button:hover{
   display: none;
 }
 
-.u-poll {
+.unanswered-poll  {
   width: 35vw;
   margin: 0 auto;
   border: 1px solid #ddd;

@@ -4,7 +4,7 @@ import SignInForm from './components/SignInForm';
 import Home from './components/Home';
 import PollView from './components/PollView';
 import NewPoll from './components/NewPoll';
-import UsersList from './components/UsersList';
+import UsersList from './components/List';
 import NotFound from './components/NotFound';
 
 class App extends React.Component {

@@ -13,7 +13,15 @@ class SignInForm extends React.Component {
       users: {},
     };
   }
+  componentDidMount() {
+    //   this.props.recieveUsers();
+    this.props.handleInitialData();
+    this.generateDropdownData();
+    this.setState({ users: this.props.users });
+    // console.log("vvvvvvv", this.props);
+  }
 
+  
   handleSignIn = () => {
     // const { dispatch } = this.props;
     const userName = this.ref.current.value;
@@ -28,12 +36,7 @@ class SignInForm extends React.Component {
     }, 1000);
   };
 
-  componentDidMount() {
-    //   this.props.recieveUsers();
-    this.props.handleInitialData();
-    this.setState({ users: this.props.users });
-    console.log("vvvvvvv", this.props);
-  }
+
 
   generateDropdownData = () => {
     const { users } = this.state;
@@ -55,6 +58,7 @@ class SignInForm extends React.Component {
   };
 
   render() {
+    console.log(this.generateDropdownData());
     return (
       <React.Fragment>
         <NavBar />

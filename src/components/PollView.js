@@ -11,7 +11,6 @@ class PollView extends React.Component {
     return this.props.users[this.props.authedUser]["answers"][id] !== undefined;
   }
 
-
   render() {
     // this.props.authedUser === null && <Redirect to={{ pathname: '/signin', state: { from: this.props.history.location }  }} />;
     if (this.props.authedUser === null)
@@ -25,19 +24,15 @@ class PollView extends React.Component {
       );
     const qid = this.props.match.params.id;
     if (!this.props.questions[qid]) return <NotFound />;
-    if (this.isAnsweredQuestion(qid))
-      return (
-        <React.Fragment>
-          <NavBar />
-          <AnsweredPoll qid={qid} />
-        </React.Fragment>
-      );
-    return (
-      <React.Fragment>
-        <NavBar />
+
+    <React.Fragment>
+      <NavBar />
+      {this.isAnsweredQuestion(qid) ? (
+        <AnsweredPoll qid={qid} />
+      ) : (
         <UnAnsweredPoll qid={qid} />
-      </React.Fragment>
-    );
+      )}
+    </React.Fragment>;
   }
 }
 

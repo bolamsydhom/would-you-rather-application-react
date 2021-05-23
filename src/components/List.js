@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserCard from './UserCard';
+import UserCard from './Card';
 import NavBar from './NavBar';
 import { Redirect } from 'react-router-dom';
 
